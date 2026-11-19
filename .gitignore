@@ -1,0 +1,23 @@
+node_modules/\n.venv/\n__pycache__/\n*.py[cod]\nserver/playtube.db\nfrontend/dist/\n.env\n
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Node
+node_modules/
+dist/
+
+# Environment secrets
+.env
+.env.*
+!.env.example
+
+# Local databases
+*.db
+*.sqlite3
+
+# System files
+.DS_Store
+Thumbs.db
