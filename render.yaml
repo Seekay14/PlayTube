@@ -1,0 +1,24 @@
+
+services:
+  # PlayTube Python API
+  - type: web
+    name: playtube-api
+    runtime: python
+    plan: free
+    region: singapore
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn server.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PLAYTUBE_CORS_ORIGINS
+        value: https://playtube-web.onrender.com
+
+  # PlayTube React frontend
+  - type: web
+    name: playtube-web
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://playtube-api.onrender.com
